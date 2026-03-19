@@ -44,7 +44,7 @@ html{ scroll-behavior:smooth; }
 
 body{
   background:
-    linear-gradient(rgba(11,30,58,.52), rgba(11,30,58,.62)),
+    linear-gradient(rgba(11,30,58,.35), rgba(11,30,58,.45)),
     url("/PCRP/assets/ca-bg.jpg");
   background-size:cover;
   background-position:center;
