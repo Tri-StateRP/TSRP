@@ -36,29 +36,23 @@
 html{ scroll-behavior:smooth; }
 
 body{
-  background:
-    linear-gradient(rgba(11,30,58,.15), rgba(11,30,58,.20)),
-    url("/PCRP/assets/PCRPbackground.jpg");
-  background-size:cover;
-  background-position:center;
-  background-attachment:fixed;
-  background-repeat:no-repeat;
-  background-color:var(--bg);
-  color:var(--text);
-  overflow-x:hidden;
+  background-image: url("/PCRP/assets/PCRPbackground.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-color: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
 }
 
-/* Fallback gradient when no image */
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  z-index:-1;
-  background:
-    radial-gradient(ellipse at 20% 80%, rgba(26,184,212,.22) 0%, transparent 55%),
-    radial-gradient(ellipse at 80% 20%, rgba(245,200,66,.16) 0%, transparent 50%),
-    radial-gradient(ellipse at 55% 55%, rgba(26,56,107,.30) 0%, transparent 55%),
-    linear-gradient(160deg, #0B1E3A 0%, #0D2B50 50%, #0B1E3A 100%);
+body::after{
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: rgba(11,30,58,.20);
+  pointer-events: none;
 }
 
 /* Font globally */
