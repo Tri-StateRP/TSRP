@@ -33,7 +33,7 @@ body{
   color: var(--text);
   overflow-x: hidden;
   font-family: var(--siteFont);
-  padding-bottom: 200px;
+  padding-bottom: 160px;
   opacity: 0;
   transition: opacity 250ms ease;
 }
@@ -257,7 +257,7 @@ body.pageLeave{ opacity:0; }
 /* ========== BACK TO TOP ========== */
 #backToTop{
   position:fixed;
-  bottom:228px;
+  bottom:188px;
   right:24px;
   z-index:200;
   width:46px;
@@ -543,23 +543,10 @@ tr:last-child td{ border-bottom:none; }
   bottom:0;
   left:0;
   right:0;
-  height:200px;
+  height:160px;
   z-index:30;
   pointer-events:none;
   overflow:hidden;
-}
-#oceanScene::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background: linear-gradient(
-    to bottom,
-    transparent 0%,
-    rgba(10,40,80,.45) 30%,
-    rgba(8,30,65,.75) 60%,
-    rgba(6,20,50,.92) 100%
-  );
-  z-index:1;
 }
 #oceanScene svg{
   position:absolute;
@@ -569,28 +556,29 @@ tr:last-child td{ border-bottom:none; }
   height:100%;
 }
 
-.waterSurface{ animation: waterShimmer 6s ease-in-out infinite; }
+/* Caustic light rays */
+.caustic{  animation: causticShimmer 4s ease-in-out infinite; }
+.caustic2{ animation: causticShimmer 6s ease-in-out infinite reverse; }
+.caustic3{ animation: causticShimmer 5s ease-in-out infinite 1.5s; }
+@keyframes causticShimmer{
+  0%,100%{ opacity:.10; transform: scaleX(1); }
+  50%{     opacity:.22; transform: scaleX(1.06); }
+}
+
+/* Water surface */
+.waterSurface{ animation: waterShimmer 5s ease-in-out infinite; }
 @keyframes waterShimmer{
-  0%,100%{ opacity:.85; }
+  0%,100%{ opacity:.80; }
   50%{ opacity:1; }
 }
+.waveLayer1{ animation: waveDrift1 9s ease-in-out infinite; }
+.waveLayer2{ animation: waveDrift2 12s ease-in-out infinite; }
+.waveLayer3{ animation: waveDrift3 15s ease-in-out infinite; }
+@keyframes waveDrift1{ 0%,100%{ transform:translateX(0); } 50%{ transform:translateX(-14px); } }
+@keyframes waveDrift2{ 0%,100%{ transform:translateX(0); } 50%{ transform:translateX(18px); } }
+@keyframes waveDrift3{ 0%,100%{ transform:translateX(0); } 50%{ transform:translateX(-10px); } }
 
-.waveLayer1{ animation: waveDrift1 8s ease-in-out infinite; }
-.waveLayer2{ animation: waveDrift2 11s ease-in-out infinite; }
-.waveLayer3{ animation: waveDrift3 14s ease-in-out infinite; }
-@keyframes waveDrift1{
-  0%,100%{ transform: translateX(0); }
-  50%{ transform: translateX(-18px); }
-}
-@keyframes waveDrift2{
-  0%,100%{ transform: translateX(0); }
-  50%{ transform: translateX(22px); }
-}
-@keyframes waveDrift3{
-  0%,100%{ transform: translateX(0); }
-  50%{ transform: translateX(-12px); }
-}
-
+/* Seaweed */
 .seaweed{ transform-origin: bottom center; }
 .sw1{ animation: sway 4s ease-in-out infinite; }
 .sw2{ animation: sway 5.5s ease-in-out infinite reverse; }
@@ -598,43 +586,85 @@ tr:last-child td{ border-bottom:none; }
 .sw4{ animation: sway 6s ease-in-out infinite reverse; }
 .sw5{ animation: sway 4.5s ease-in-out infinite; }
 @keyframes sway{
-  0%,100%{ transform: rotate(-8deg); }
-  50%{ transform: rotate(8deg); }
+  0%,100%{ transform:rotate(-7deg); }
+  50%{ transform:rotate(7deg); }
 }
 
+/* Anemone */
+.anemone{ transform-origin: bottom center; animation: anemSway 3s ease-in-out infinite; }
+.anemone:nth-child(2){ animation-delay:-.6s; }
+.anemone:nth-child(3){ animation-delay:-1.2s; }
+.anemone:nth-child(4){ animation-delay:-.3s; }
+.anemone:nth-child(5){ animation-delay:-.9s; }
+@keyframes anemSway{
+  0%,100%{ transform:rotate(-12deg) scaleY(1); }
+  50%{     transform:rotate(12deg) scaleY(1.05); }
+}
+
+/* Fish */
 .fish{ animation-timing-function: linear; animation-iteration-count: infinite; }
-.fish1{ animation: swimRight1 18s linear infinite; }
-.fish2{ animation: swimLeft1 24s linear infinite; }
-.fish3{ animation: swimRight2 14s linear infinite; animation-delay: -6s; }
-.fish4{ animation: swimLeft2 20s linear infinite; animation-delay: -10s; }
-.fish5{ animation: swimRight3 28s linear infinite; animation-delay: -4s; }
-.fish6{ animation: swimLeft3 16s linear infinite; animation-delay: -12s; }
+.fish1{ animation: swimR1 20s linear infinite; }
+.fish2{ animation: swimL1 26s linear infinite; }
+.fish3{ animation: swimR2 15s linear infinite -5s; }
+.fish4{ animation: swimL2 22s linear infinite -11s; }
+.fish5{ animation: swimR3 30s linear infinite -3s; }
+.fish6{ animation: swimL3 18s linear infinite -13s; }
 
-@keyframes swimRight1{ 0%{ transform: translateX(-80px); } 100%{ transform: translateX(calc(100vw + 80px)); } }
-@keyframes swimRight2{ 0%{ transform: translateX(-80px); } 100%{ transform: translateX(calc(100vw + 80px)); } }
-@keyframes swimRight3{ 0%{ transform: translateX(-80px); } 100%{ transform: translateX(calc(100vw + 80px)); } }
-@keyframes swimLeft1{ 0%{ transform: translateX(calc(100vw + 80px)) scaleX(-1); } 100%{ transform: translateX(-80px) scaleX(-1); } }
-@keyframes swimLeft2{ 0%{ transform: translateX(calc(100vw + 80px)) scaleX(-1); } 100%{ transform: translateX(-80px) scaleX(-1); } }
-@keyframes swimLeft3{ 0%{ transform: translateX(calc(100vw + 80px)) scaleX(-1); } 100%{ transform: translateX(-80px) scaleX(-1); } }
-
-.bubble{ animation: rise linear infinite; opacity:0; }
-.b1{ animation-duration:6s; animation-delay:0s; }
-.b2{ animation-duration:8s; animation-delay:-2s; }
-.b3{ animation-duration:5s; animation-delay:-4s; }
-.b4{ animation-duration:9s; animation-delay:-1s; }
-.b5{ animation-duration:7s; animation-delay:-3s; }
-@keyframes rise{
-  0%{ transform:translateY(0) translateX(0); opacity:0; }
-  10%{ opacity:.6; }
-  90%{ opacity:.3; }
-  100%{ transform:translateY(-180px) translateX(10px); opacity:0; }
+.fishBody{  animation: fishWiggle 0.50s ease-in-out infinite alternate; transform-origin: right center; }
+.fishBody2{ animation: fishWiggle 0.45s ease-in-out infinite alternate; transform-origin: right center; }
+.fishBody3{ animation: fishWiggle 0.60s ease-in-out infinite alternate; transform-origin: right center; }
+@keyframes fishWiggle{
+  from{ transform: skewY(-3deg); }
+  to{   transform: skewY(3deg); }
+}
+.fishTail{  animation: tailFlick 0.50s ease-in-out infinite alternate; transform-origin: right center; }
+.fishTail2{ animation: tailFlick 0.45s ease-in-out infinite alternate; transform-origin: right center; }
+@keyframes tailFlick{
+  from{ transform: rotate(-18deg); }
+  to{   transform: rotate(18deg); }
+}
+.dorsalFin{ animation: dorsalWave 0.8s ease-in-out infinite alternate; transform-origin: bottom center; }
+@keyframes dorsalWave{
+  from{ transform: skewX(-5deg); }
+  to{   transform: skewX(5deg); }
 }
 
-.coralGlow{ animation: coralPulse 4s ease-in-out infinite; }
+@keyframes swimR1{ 0%{ transform:translateX(-80px) translateY(0); } 48%{ transform:translateX(48vw) translateY(-6px); } 100%{ transform:translateX(calc(100vw + 80px)) translateY(0); } }
+@keyframes swimR2{ 0%{ transform:translateX(-60px) translateY(0); } 50%{ transform:translateX(50vw) translateY(5px); } 100%{ transform:translateX(calc(100vw + 60px)) translateY(0); } }
+@keyframes swimR3{ 0%{ transform:translateX(-70px) translateY(0); } 45%{ transform:translateX(45vw) translateY(-4px); } 100%{ transform:translateX(calc(100vw + 70px)) translateY(0); } }
+@keyframes swimL1{ 0%{ transform:translateX(calc(100vw + 80px)) scaleX(-1) translateY(0); } 52%{ transform:translateX(52vw) scaleX(-1) translateY(5px); } 100%{ transform:translateX(-80px) scaleX(-1) translateY(0); } }
+@keyframes swimL2{ 0%{ transform:translateX(calc(100vw + 60px)) scaleX(-1) translateY(0); } 50%{ transform:translateX(48vw) scaleX(-1) translateY(-4px); } 100%{ transform:translateX(-60px) scaleX(-1) translateY(0); } }
+@keyframes swimL3{ 0%{ transform:translateX(calc(100vw + 70px)) scaleX(-1) translateY(0); } 55%{ transform:translateX(55vw) scaleX(-1) translateY(6px); } 100%{ transform:translateX(-70px) scaleX(-1) translateY(0); } }
+
+/* Bubbles */
+.bubble{ animation: rise linear infinite; opacity:0; }
+.b1{ animation-duration:7s;   animation-delay:0s; }
+.b2{ animation-duration:9s;   animation-delay:-2.5s; }
+.b3{ animation-duration:6s;   animation-delay:-4s; }
+.b4{ animation-duration:10s;  animation-delay:-1s; }
+.b5{ animation-duration:8s;   animation-delay:-3.5s; }
+.b6{ animation-duration:6.5s; animation-delay:-5s; }
+@keyframes rise{
+  0%{   transform:translateY(0) translateX(0); opacity:0; }
+  8%{   opacity:.55; }
+  88%{  opacity:.25; }
+  100%{ transform:translateY(-140px) translateX(8px); opacity:0; }
+}
+
+/* Coral pulse */
+.coralGlow{  animation: coralPulse 4.0s ease-in-out infinite; }
 .coralGlow2{ animation: coralPulse 5.5s ease-in-out infinite reverse; }
+.coralGlow3{ animation: coralPulse 3.5s ease-in-out infinite 1s; }
 @keyframes coralPulse{
-  0%,100%{ opacity:.80; }
-  50%{ opacity:1; filter: drop-shadow(0 0 6px rgba(245,120,60,.55)); }
+  0%,100%{ opacity:.82; filter: drop-shadow(0 0 2px rgba(245,120,60,.30)); }
+  50%{     opacity:1;   filter: drop-shadow(0 0 7px rgba(245,120,60,.60)); }
+}
+
+/* Sand shimmer */
+.sandRipple{ animation: sandShimmer 8s ease-in-out infinite; }
+@keyframes sandShimmer{
+  0%,100%{ opacity:.15; }
+  50%{ opacity:.28; }
 }
 
 /* ========== RESPONSIVE ========== */
