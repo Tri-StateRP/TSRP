@@ -339,7 +339,11 @@
       if(sidebar.classList.contains("open") && !sidebar.contains(e.target) && e.target !== menuBtn){
         sidebar.classList.remove("open");
         menuBtn.innerHTML = "☰ Menu";
-      }  // ==============================
+      }
+    });
+  }
+
+  // ==============================
   // OCEAN SCENE
   // ==============================
   function injectOceanScene(){
@@ -389,37 +393,31 @@
         <rect x="0" y="0" width="1440" height="200" fill="url(#waterGrad)"/>
         <rect x="0" y="0" width="1440" height="200" fill="url(#sunsetWater)"/>
 
-        <!-- ===== SEAWEED ===== -->
-        <!-- sw1 -->
+        <!-- SEAWEED -->
         <g class="seaweed sw1">
           <path d="M80,160 C75,140 85,120 78,100 C71,80 82,65 80,50" stroke="url(#seaweedGrad)" stroke-width="4" fill="none" stroke-linecap="round"/>
           <path d="M80,130 C90,122 100,125 105,118" stroke="url(#seaweedGrad)" stroke-width="3" fill="none" stroke-linecap="round"/>
           <path d="M79,105 C68,97 60,100 55,93" stroke="url(#seaweedGrad)" stroke-width="3" fill="none" stroke-linecap="round"/>
         </g>
-        <!-- sw2 -->
         <g class="seaweed sw2">
           <path d="M160,160 C155,138 165,115 158,92" stroke="url(#seaweedGrad)" stroke-width="3.5" fill="none" stroke-linecap="round"/>
           <path d="M159,125 C170,117 178,120 182,112" stroke="url(#seaweedGrad)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
         </g>
-        <!-- sw3 -->
         <g class="seaweed sw3">
           <path d="M700,160 C695,135 708,110 700,85 C692,65 703,50 700,35" stroke="url(#seaweedGrad)" stroke-width="4" fill="none" stroke-linecap="round"/>
           <path d="M701,118 C714,108 724,112 730,104" stroke="url(#seaweedGrad)" stroke-width="3" fill="none" stroke-linecap="round"/>
           <path d="M700,90 C688,80 678,84 673,76" stroke="url(#seaweedGrad)" stroke-width="3" fill="none" stroke-linecap="round"/>
         </g>
-        <!-- sw4 -->
         <g class="seaweed sw4">
           <path d="M1100,160 C1095,140 1108,118 1100,95" stroke="url(#seaweedGrad)" stroke-width="3.5" fill="none" stroke-linecap="round"/>
           <path d="M1101,128 C1113,119 1122,122 1127,115" stroke="url(#seaweedGrad)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
         </g>
-        <!-- sw5 -->
         <g class="seaweed sw5">
           <path d="M1380,160 C1375,138 1386,115 1379,92" stroke="url(#seaweedGrad)" stroke-width="3.5" fill="none" stroke-linecap="round"/>
           <path d="M1380,125 C1391,116 1400,119 1405,112" stroke="url(#seaweedGrad)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
         </g>
 
-        <!-- ===== CORAL REEF ===== -->
-        <!-- Coral cluster 1 - orange branching -->
+        <!-- CORAL -->
         <g class="coralGlow">
           <line x1="300" y1="160" x2="300" y2="125" stroke="url(#coralGrad1)" stroke-width="5" stroke-linecap="round"/>
           <line x1="300" y1="138" x2="285" y2="118" stroke="url(#coralGrad1)" stroke-width="3.5" stroke-linecap="round"/>
@@ -434,8 +432,6 @@
           <circle cx="323" cy="101" r="3.5" fill="#F59060"/>
           <circle cx="300" cy="123" r="4.5" fill="#F56A3C"/>
         </g>
-
-        <!-- Coral cluster 2 - yellow fan -->
         <g class="coralGlow2">
           <line x1="480" y1="160" x2="480" y2="130" stroke="url(#coralGrad2)" stroke-width="4" stroke-linecap="round"/>
           <line x1="480" y1="145" x2="465" y2="128" stroke="url(#coralGrad2)" stroke-width="3" stroke-linecap="round"/>
@@ -449,8 +445,6 @@
           <circle cx="465" cy="126" r="3" fill="#F5D870"/>
           <circle cx="495" cy="124" r="3" fill="#F5C842"/>
         </g>
-
-        <!-- Coral cluster 3 - pink/magenta -->
         <g class="coralGlow">
           <line x1="860" y1="160" x2="860" y2="128" stroke="url(#coralGrad3)" stroke-width="5" stroke-linecap="round"/>
           <line x1="860" y1="140" x2="845" y2="120" stroke="url(#coralGrad3)" stroke-width="3.5" stroke-linecap="round"/>
@@ -465,8 +459,6 @@
           <circle cx="883" cy="104" r="3.5" fill="#F070C0"/>
           <circle cx="860" cy="126" r="4.5" fill="#E040A0"/>
         </g>
-
-        <!-- Coral cluster 4 - orange small right -->
         <g class="coralGlow2">
           <line x1="1200" y1="160" x2="1200" y2="132" stroke="url(#coralGrad1)" stroke-width="4" stroke-linecap="round"/>
           <line x1="1200" y1="144" x2="1188" y2="126" stroke="url(#coralGrad1)" stroke-width="3" stroke-linecap="round"/>
@@ -478,7 +470,7 @@
           <circle cx="1218" cy="110" r="3.5" fill="#F56A3C"/>
         </g>
 
-        <!-- Round coral / brain coral blobs -->
+        <!-- Brain corals -->
         <ellipse cx="400" cy="158" rx="22" ry="14" fill="#C84010" opacity="0.80"/>
         <ellipse cx="400" cy="152" rx="18" ry="10" fill="#E05020" opacity="0.70"/>
         <ellipse cx="960" cy="159" rx="18" ry="12" fill="#B03080" opacity="0.75"/>
@@ -486,14 +478,13 @@
         <ellipse cx="1340" cy="158" rx="20" ry="12" fill="#C87010" opacity="0.70"/>
         <ellipse cx="1340" cy="153" rx="16" ry="8" fill="#E09020" opacity="0.60"/>
 
-        <!-- Small rocks -->
+        <!-- Rocks -->
         <ellipse cx="50" cy="162" rx="30" ry="10" fill="#0A1A30" opacity="0.80"/>
         <ellipse cx="550" cy="163" rx="25" ry="9" fill="#0A1A30" opacity="0.75"/>
         <ellipse cx="1050" cy="162" rx="28" ry="9" fill="#0A1A30" opacity="0.78"/>
 
-        <!-- ===== FISH ===== -->
-        <!-- Fish 1 - orange tropical going right, mid depth -->
-        <g class="fish fish1" style="position:absolute" transform="translate(-60, 0)">
+        <!-- FISH -->
+        <g class="fish fish1" transform="translate(-60, 0)">
           <g transform="translate(0, 75)">
             <ellipse cx="0" cy="0" rx="14" ry="7" fill="#F5823C"/>
             <polygon points="-14,0 -22,-7 -22,7" fill="#F5A050"/>
@@ -503,8 +494,6 @@
             <line x1="2" y1="-7" x2="2" y2="7" stroke="#E06020" stroke-width="1.2" opacity="0.6"/>
           </g>
         </g>
-
-        <!-- Fish 2 - blue going left, shallow -->
         <g class="fish fish2" transform="translate(1500, 0)">
           <g transform="translate(0, 45)">
             <ellipse cx="0" cy="0" rx="12" ry="6" fill="#1AB8D4"/>
@@ -514,8 +503,6 @@
             <line x1="-2" y1="-6" x2="-2" y2="6" stroke="#0E90A8" stroke-width="1" opacity="0.6"/>
           </g>
         </g>
-
-        <!-- Fish 3 - yellow small going right, deep -->
         <g class="fish fish3" transform="translate(-40, 0)">
           <g transform="translate(0, 120)">
             <ellipse cx="0" cy="0" rx="10" ry="5" fill="#F5C842"/>
@@ -525,8 +512,6 @@
             <line x1="-1" y1="-5" x2="-1" y2="5" stroke="#D4A020" stroke-width="1" opacity="0.55"/>
           </g>
         </g>
-
-        <!-- Fish 4 - pink/magenta going left, mid -->
         <g class="fish fish4" transform="translate(1500, 0)">
           <g transform="translate(0, 95)">
             <ellipse cx="0" cy="0" rx="11" ry="5.5" fill="#E040A0"/>
@@ -535,8 +520,6 @@
             <circle cx="5" cy="-1" r="1.2" fill="#1A1A1A"/>
           </g>
         </g>
-
-        <!-- Fish 5 - green small going right, very deep -->
         <g class="fish fish5" transform="translate(-50, 0)">
           <g transform="translate(0, 140)">
             <ellipse cx="0" cy="0" rx="9" ry="4.5" fill="#2ECC71"/>
@@ -545,8 +528,6 @@
             <circle cx="3.8" cy="-1" r="1" fill="#1A1A1A"/>
           </g>
         </g>
-
-        <!-- Fish 6 - orange-red going left, shallow -->
         <g class="fish fish6" transform="translate(1500, 0)">
           <g transform="translate(0, 55)">
             <ellipse cx="0" cy="0" rx="13" ry="6.5" fill="#E84020"/>
@@ -557,27 +538,22 @@
           </g>
         </g>
 
-        <!-- ===== BUBBLES ===== -->
+        <!-- BUBBLES -->
         <circle class="bubble b1" cx="120" cy="155" r="3" fill="none" stroke="rgba(200,240,255,0.55)" stroke-width="1.2"/>
         <circle class="bubble b2" cx="440" cy="158" r="2" fill="none" stroke="rgba(200,240,255,0.50)" stroke-width="1"/>
         <circle class="bubble b3" cx="780" cy="156" r="2.5" fill="none" stroke="rgba(200,240,255,0.55)" stroke-width="1.1"/>
         <circle class="bubble b4" cx="1100" cy="157" r="3" fill="none" stroke="rgba(200,240,255,0.50)" stroke-width="1.2"/>
         <circle class="bubble b5" cx="1350" cy="155" r="2" fill="none" stroke="rgba(200,240,255,0.45)" stroke-width="1"/>
 
-        <!-- ===== WATER SURFACE ===== -->
+        <!-- WATER SURFACE -->
         <g class="waterSurface">
           <path class="waveLayer1" d="M-100,18 C100,4 300,32 500,18 C700,4 900,32 1100,18 C1300,4 1440,18 1540,18 L1540,0 L-100,0 Z" fill="rgba(26,184,212,0.22)"/>
           <path class="waveLayer2" d="M-100,22 C150,8 350,36 600,22 C850,8 1050,36 1300,22 C1400,14 1540,22 1540,22 L1540,0 L-100,0 Z" fill="rgba(245,200,66,0.10)"/>
           <path class="waveLayer3" d="M-100,14 C200,28 400,6 700,14 C1000,22 1200,6 1440,14 C1480,16 1540,14 1540,14 L1540,0 L-100,0 Z" fill="rgba(26,184,212,0.14)"/>
         </g>
-
       </svg>
     `;
     document.body.appendChild(scene);
-  }
-
-  injectOceanScene();
-    });
   }
 
   // ==============================
@@ -593,4 +569,6 @@
   initPageTransitions();
   initParallax();
   fetchServerStatus();
+  injectOceanScene();
+
 })();
