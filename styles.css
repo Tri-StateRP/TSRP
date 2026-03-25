@@ -13,6 +13,7 @@
   --borderAmber: rgba(245,166,35,.35);
   --borderBlue:  rgba(74,144,217,.40);
   --ringBlue:    rgba(74,144,217,.20);
+  --lightBlue:   #7AB4F5;
   --radius: 12px;
   --trans: 180ms ease;
   --scriptFont: 'Rajdhani', sans-serif;
@@ -435,7 +436,7 @@ h2::after{
 }
 h3{
   font-family: var(--siteFont) !important;
-  color: #7AB4F5 !important;
+  color: var(--lightBlue) !important;
   font-weight:700;
   margin:16px 0 8px;
 }
