@@ -537,6 +537,144 @@ tr:last-child td{ border-bottom:none; }
 .serverInfoCard p{ line-height:1.78 !important; margin:0 !important; }
 
 
+/* ========== STORE / COIN SHOP ========== */
+.coin-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+  gap:24px;
+  margin-top:28px;
+}
+
+.coin-card{
+  background: rgba(13,27,42,.72);
+  border:1px solid var(--borderBlue);
+  border-radius:var(--radius);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  padding:28px 20px 20px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:12px;
+  position:relative;
+  transition:transform var(--trans), box-shadow var(--trans), border-color var(--trans);
+}
+
+.coin-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 8px 32px rgba(74,144,217,.25), 0 0 0 1px var(--borderAmber);
+  border-color:var(--borderAmber);
+}
+
+.coin-image{
+  width:120px;
+  height:120px;
+  object-fit:contain;
+  filter:drop-shadow(0 0 10px rgba(245,166,35,.45));
+}
+
+.coin-amount{
+  font-family:var(--scriptFont);
+  font-size:1.4rem;
+  font-weight:700;
+  color:var(--text);
+  text-align:center;
+}
+
+.coin-price{
+  font-family:var(--scriptFont);
+  font-size:2rem;
+  font-weight:700;
+  color:var(--neonAmber);
+  text-shadow:0 0 12px rgba(245,166,35,.55);
+}
+
+.coin-original-price{
+  font-size:0.9rem;
+  color:var(--muted2);
+  text-decoration:line-through;
+}
+
+.save-badge{
+  position:absolute;
+  top:12px;
+  right:12px;
+  background:linear-gradient(135deg, #16a34a, #22c55e);
+  color:#fff;
+  font-size:0.72rem;
+  font-weight:700;
+  letter-spacing:.05em;
+  padding:3px 9px;
+  border-radius:20px;
+  text-transform:uppercase;
+  box-shadow:0 2px 8px rgba(34,197,94,.35);
+}
+
+.paypal-btn-wrap{
+  width:100%;
+  margin-top:8px;
+}
+
+.confirmation-card{
+  background:rgba(13,27,42,.82);
+  border:1px solid var(--borderAmber);
+  border-radius:var(--radius);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  padding:36px 28px;
+  max-width:640px;
+  margin:40px auto 0;
+  text-align:center;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:16px;
+}
+
+.confirmation-card h2{
+  font-family:var(--scriptFont);
+  font-size:1.8rem;
+  color:var(--neonAmber);
+  text-shadow:0 0 12px rgba(245,166,35,.5);
+}
+
+.confirmation-card p{
+  color:var(--muted);
+  line-height:1.65;
+  font-size:0.97rem;
+}
+
+.transaction-id{
+  background:rgba(74,144,217,.12);
+  border:1px solid var(--borderBlue);
+  border-radius:8px;
+  font-family:monospace;
+  font-size:1rem;
+  color:var(--electricBlue);
+  padding:10px 18px;
+  word-break:break-all;
+  letter-spacing:.04em;
+}
+
+.btn-back{
+  margin-top:8px;
+  padding:10px 28px;
+  border-radius:var(--radius);
+  border:1px solid var(--borderAmber);
+  background:transparent;
+  color:var(--neonAmber);
+  font-family:var(--scriptFont);
+  font-size:1rem;
+  font-weight:700;
+  cursor:pointer;
+  transition:background var(--trans), color var(--trans);
+}
+
+.btn-back:hover{
+  background:var(--neonAmber);
+  color:var(--nightSky);
+}
+
 /* ========== RESPONSIVE ========== */
 @media (max-width: 860px){
   .shell{ display:block; }

@@ -23,6 +23,13 @@ const links = [
       { href: "/TSRP/leo/", label: "LEO" },
       { href: "/TSRP/ems/", label: "EMS" }
     ]
+  },
+
+  {
+    group: "Shop",
+    items: [
+      { href: "/TSRP/store/", label: "TS:RP Coin Store" }
+    ]
   }
 ];
 
