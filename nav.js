@@ -28,7 +28,8 @@ const links = [
   {
     group: "Shop",
     items: [
-      { href: "/TSRP/store/", label: "TS:RP Coin Store" }
+      { href: "/TSRP/store/", label: "TS:RP Coin Store" },
+      { href: "/TSRP/store/plugs/", label: "TS:RP Plugs" }
     ]
   }
 ];
