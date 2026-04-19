@@ -1,35 +1,39 @@
 (function(){
+const SCRIPT_SRC = (document.currentScript && document.currentScript.src)
+  ? document.currentScript.src
+  : new URL("nav.js", window.location.href).toString();
+const SITE_ROOT = new URL(".", SCRIPT_SRC).pathname.replace(/\/$/, "");
+const pagePath = (path) => `${SITE_ROOT}${path}`;
 
 const links = [
   {
     group: "Core",
     items: [
-      { href: "/TSRP/", label: "Home" },
-      { href: "/TSRP/server-bible/", label: "Server Bible" }
+      { href: pagePath("/"), label: "Home" },
+      { href: pagePath("/server-bible/"), label: "Server Bible" }
     ]
   },
 
   {
     group: "Rules of Engagement",
     items: [
-      { href: "/TSRP/faction-roe/", label: "Faction ROE" },
-      { href: "/TSRP/families-roe/", label: "Families ROE" }
+      { href: pagePath("/faction-roe/"), label: "Faction ROE" },
+      { href: pagePath("/families-roe/"), label: "Families ROE" }
     ]
   },
 
   {
     group: "Departments",
     items: [
-      { href: "/TSRP/leo/", label: "LEO" },
-      { href: "/TSRP/ems/", label: "EMS" }
+      { href: pagePath("/leo/"), label: "LEO" },
+      { href: pagePath("/ems/"), label: "EMS" }
     ]
   },
 
   {
     group: "Shop",
     items: [
-      { href: "/TSRP/store/coins/", label: "TS:RP Coin Store" },
-      { href: "/TSRP/store/plugs/", label: "TS:RP Plugs" }
+      { href: pagePath("/store/plugs/"), label: "Beale Street Stories Store" }
     ]
   }
 ];

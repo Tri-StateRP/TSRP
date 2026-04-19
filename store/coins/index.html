@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>TS:RP Coins • Tri-State RP</title>
+  <title>Store • Beale Street Stories</title>
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../styles.css"/>
 </head>
@@ -12,7 +12,7 @@
 <div class="shell">
 
   <aside class="sidebar">
-    <div class="brand">Tri-State RP</div>
+    <div class="brand">Beale Street Stories</div>
 
     <div class="search">
       <input id="searchInput" placeholder="Search this page… (Ctrl/⌘ + K)" />
@@ -24,82 +24,14 @@
   <main class="main">
     <button id="menuBtn" style="margin-bottom:15px;">☰ Menu</button>
 
-    <!-- Store section -->
-    <div id="storeSection">
-      <h1>🪙 TS:RP Coins</h1>
-      <p style="margin-top:10px; color:var(--muted); max-width:640px;">
-        TS:RP Coins are used to support Tri-State Roleplay and unlock in-game perks and features.
-        After purchase, open a <strong>donation ticket</strong> in the Discord and provide your PayPal Transaction ID.
-      </p>
-
-      <div class="coin-grid">
-
-        <!-- Bundle 1: 5 coins — $10.00 (no discount) -->
-        <div class="coin-card">
-          <img class="coin-image" src="../../assets/TSRP-Coin.png" alt="TS:RP Coin"/>
-          <div class="coin-amount">5 TS:RP Coins</div>
-          <div class="coin-price">$10.00</div>
-          <div id="paypal-5" class="paypal-btn-wrap"></div>
-        </div>
-
-        <!-- Bundle 2: 15 coins — $25.00 (17% off) -->
-        <div class="coin-card">
-          <span class="save-badge">SAVE 17%</span>
-          <img class="coin-image" src="../../assets/TSRP-Coin.png" alt="TS:RP Coin"/>
-          <div class="coin-amount">15 TS:RP Coins</div>
-          <div class="coin-price">$25.00</div>
-          <div class="coin-original-price">base $30.00</div>
-          <div id="paypal-15" class="paypal-btn-wrap"></div>
-        </div>
-
-        <!-- Bundle 3: 25 coins — $40.00 (20% off) -->
-        <div class="coin-card">
-          <span class="save-badge">SAVE 20%</span>
-          <img class="coin-image" src="../../assets/TSRP-Coin.png" alt="TS:RP Coin"/>
-          <div class="coin-amount">25 TS:RP Coins</div>
-          <div class="coin-price">$40.00</div>
-          <div class="coin-original-price">base $50.00</div>
-          <div id="paypal-25" class="paypal-btn-wrap"></div>
-        </div>
-
-        <!-- Bundle 4: 50 coins — $80.00 (20% off) -->
-        <div class="coin-card">
-          <span class="save-badge">SAVE 20%</span>
-          <img class="coin-image" src="../../assets/TSRP-Coin.png" alt="TS:RP Coin"/>
-          <div class="coin-amount">50 TS:RP Coins</div>
-          <div class="coin-price">$80.00</div>
-          <div class="coin-original-price">base $100.00</div>
-          <div id="paypal-50" class="paypal-btn-wrap"></div>
-        </div>
-
-        <!-- Bundle 5: 100 coins — $125.00 (38% off) -->
-        <div class="coin-card">
-          <span class="save-badge">SAVE 38%</span>
-          <img class="coin-image" src="../../assets/TSRP-Coin.png" alt="TS:RP Coin"/>
-          <div class="coin-amount">100 TS:RP Coins</div>
-          <div class="coin-price">$125.00</div>
-          <div class="coin-original-price">base $200.00</div>
-          <div id="paypal-100" class="paypal-btn-wrap"></div>
-        </div>
-
-      </div>
-
-    </div><!-- /#storeSection -->
-
-    <!-- Confirmation section (hidden until payment captured) -->
-    <div id="confirmSection" style="display:none;">
-      <div class="confirmation-card">
-        <h2>✅ Purchase Complete!</h2>
-        <p id="confirmMsg"></p>
-        <p>Your PayPal Transaction ID:</p>
-        <div id="txnId" class="transaction-id"></div>
-        <p>
-          Please open a <strong>donation ticket</strong> within the Discord and provide your
-          PayPal Transaction ID or confirmation email. Thanks for supporting Tri-State Roleplay!
-        </p>
-        <button class="btn-back" onclick="location.reload()">← Back to Store</button>
-      </div>
-    </div>
+    <h1>🛍️ Beale Street Stories Store</h1>
+    <p style="margin-top:10px; color:var(--muted); max-width:640px;">
+      Coin bundles have been removed from the store.
+      Please visit the active store page for current purchase options.
+    </p>
+    <p style="margin-top:14px;">
+      <a class="headerBtn" href="../plugs/">Open Store</a>
+    </p>
 
   </main>
 </div>
@@ -107,95 +39,5 @@
 <script src="../../nav.js"></script>
 <script src="../../app.js"></script>
 
-<script src="https://www.paypal.com/sdk/js?client-id=ASxUx1x3cTgConRY0tubSFkOUDzrycDB81uMwmaEHxWIZ5TgM79sS8mZZrvcW8JMQftp-mQcPbL16EuH&currency=USD"></script>
-<script>
-(function () {
-  const bundles = [
-    { containerId: "paypal-5",   coins: 5,   price: "10.00" },
-    { containerId: "paypal-15",  coins: 15,  price: "25.00" },
-    { containerId: "paypal-25",  coins: 25,  price: "40.00" },
-    { containerId: "paypal-50",  coins: 50,  price: "80.00" },
-    { containerId: "paypal-100", coins: 100, price: "125.00" }
-  ];
-
-  function showConfirmation(productName, price, transactionId) {
-    document.getElementById("storeSection").style.display = "none";
-    document.getElementById("confirmSection").style.display = "block";
-    document.getElementById("confirmMsg").textContent =
-      `Thank you for your purchase! ${productName} — $${price}.`;
-    document.getElementById("txnId").textContent = transactionId;
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }
-
-  function showError(containerId) {
-    const el = document.getElementById(containerId);
-    if (el) {
-      el.innerHTML = '<p style="color:#f87171;font-size:0.9rem;text-align:center;margin-top:8px;">Payment failed. Please try again or contact support.</p>';
-    }
-  }
-
-  bundles.forEach(function (bundle) {
-    paypal.Buttons({
-      createOrder: function (data, actions) {
-        return actions.order.create({
-          purchase_units: [{
-            description: `${bundle.coins} TS:RP Coins`,
-            amount: {
-              currency_code: "USD",
-              value: bundle.price
-            }
-          }]
-        });
-      },
-      onApprove: function (data, actions) {
-        return actions.order.capture().then(function (details) {
-          const txnId = details.id;
-          showConfirmation(`${bundle.coins} TS:RP Coins`, bundle.price, txnId);
-        }).catch(function () {
-          showError(bundle.containerId);
-        });
-      },
-      onError: function () {
-        showError(bundle.containerId);
-      }
-    }).render("#" + bundle.containerId);
-  });
-
-  const plugs = [
-    { containerId: "paypal-plug-melee",   name: "Melee Plug",      price: "75.00" },
-    { containerId: "paypal-plug-scammer", name: "Scammer Plug",     price: "75.00" },
-    { containerId: "paypal-plug-gun-t1",  name: "Gun Plug Tier 1",  price: "100.00" },
-    { containerId: "paypal-plug-gun-t2",  name: "Gun Plug Tier 2",  price: "150.00" },
-    { containerId: "paypal-plug-drug",    name: "Drug Plug",        price: "75.00" }
-  ];
-
-  plugs.forEach(function (plug) {
-    paypal.Buttons({
-      createOrder: function (data, actions) {
-        return actions.order.create({
-          purchase_units: [{
-            description: plug.name,
-            amount: {
-              currency_code: "USD",
-              value: plug.price
-            }
-          }]
-        });
-      },
-      onApprove: function (data, actions) {
-        return actions.order.capture().then(function (details) {
-          const txnId = details.id;
-          showConfirmation(plug.name, plug.price, txnId);
-        }).catch(function () {
-          showError(plug.containerId);
-        });
-      },
-      onError: function () {
-        showError(plug.containerId);
-      }
-    }).render("#" + plug.containerId);
-  });
-})();
-</script>
 </body>
 </html>

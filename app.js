@@ -1,14 +1,24 @@
 (function(){
+  const SCRIPT_SRC = (document.currentScript && document.currentScript.src)
+    ? document.currentScript.src
+    : new URL("app.js", window.location.href).toString();
+  const SITE_ROOT = new URL(".", SCRIPT_SRC).pathname.replace(/\/$/, "");
+  const pagePath = (path) => `${SITE_ROOT}${path}`;
+  const assetUrl = (assetPath) => new URL(assetPath, SCRIPT_SRC).toString();
+
   // ================================
   // ONE-PLACE CONFIG (EDIT THIS)
   // ================================
   const SITE = {
-    name: "Tri-State RP",
+    name: "Beale Street Stories",
     emoji: "🏙️",
-    tagline: "Tri-State Area • Semi-serious RP",
+    tagline: "Memphis • Dark Neon RP",
     discordUrl: "https://discord.gg/vRTB8gq3WN",
     connectUrl: "",
-    cfxUrl: "https://cfx.re/join/krbzd7",
+    cfxUrl: "https://cfx.re/join/3ygj9qo",
+    cfxCode: "3ygj9qo",
+    logoAssetPath: "assets/server-logo.png",
+    bannerAssetPath: "assets/server-banner.png",
     tebexUrl: ""
   };
 
@@ -20,7 +30,7 @@
     const banner = document.createElement("div");
     banner.id = "siteBanner";
     banner.innerHTML = `
-      <span class="bannerText">🎉 Server now OPEN with FREE whitelist! Looking for dedicated staff!</span>
+      <span class="bannerText">🌃 Welcome to Beale Street Stories — Memphis nights, neon lights, and high-quality RP.</span>
       <button class="bannerClose" id="bannerClose" aria-label="Close">✕</button>
     `;
     document.body.prepend(banner);
@@ -49,7 +59,10 @@
       </div>
       <div class="headerInner">
         <div class="headerLeft">
-          <div class="headerTitle">${SITE.emoji} ${SITE.name}</div>
+          <div class="headerTitle">
+            <img class="brandLogo" src="${assetUrl(SITE.logoAssetPath)}" alt="${SITE.name} logo"/>
+            <span>${SITE.emoji} ${SITE.name}</span>
+          </div>
           <div class="headerSub">${SITE.tagline}</div>
         </div>
         <div class="headerRight">
@@ -72,7 +85,7 @@
     const statusEl = document.getElementById("serverStatus");
     if(!statusEl) return;
     try {
-      const res = await fetch("https://servers-frontend.fivem.net/api/servers/single/krbzd7");
+      const res = await fetch(`https://servers-frontend.fivem.net/api/servers/single/${SITE.cfxCode}`);
       if(!res.ok) throw new Error();
       const data = await res.json();
       const players = data?.Data?.clients ?? 0;
@@ -127,12 +140,13 @@
   // BREADCRUMBS
   // ==============================
   const NAV_MAP = {
-    "/TSRP/": ["Home"],
-    "/TSRP/server-bible/": ["Core", "Server Bible"],
-    "/TSRP/faction-roe/": ["Rules of Engagement", "Faction ROE"],
-    "/TSRP/families-roe/": ["Rules of Engagement", "Families ROE"],
-    "/TSRP/leo/": ["Departments", "LEO"],
-    "/TSRP/ems/": ["Departments", "EMS"]
+    [pagePath("/")]: ["Home"],
+    [pagePath("/server-bible/")]: ["Core", "Server Bible"],
+    [pagePath("/faction-roe/")]: ["Rules of Engagement", "Faction ROE"],
+    [pagePath("/families-roe/")]: ["Rules of Engagement", "Families ROE"],
+    [pagePath("/leo/")]: ["Departments", "LEO"],
+    [pagePath("/ems/")]: ["Departments", "EMS"],
+    [pagePath("/store/plugs/")]: ["Shop", "Store"]
   };
 
   function injectBreadcrumb(){
@@ -145,7 +159,7 @@
     const nav = document.createElement("nav");
     nav.id = "breadcrumb";
     nav.setAttribute("aria-label", "Breadcrumb");
-    const parts = ["<a href='/TSRP/'>🏠 Home</a>", ...crumbs.map((c, i) =>
+    const parts = [`<a href='${pagePath("/")}'>🏠 Home</a>`, ...crumbs.map((c, i) =>
       i === crumbs.length - 1 ? `<span>${c}</span>` : `<span>${c}</span>`
     )];
     nav.innerHTML = parts.join("<span class='breadSep'>›</span>");
@@ -219,13 +233,18 @@
   // SEARCH FUNCTIONALITY
   // ==============================
   const SITE_PAGES = [
-    { title: "Home", path: "/TSRP/" },
-    { title: "Server Bible", path: "/TSRP/server-bible/" },
-    { title: "Faction ROE", path: "/TSRP/faction-roe/" },
-    { title: "Families ROE", path: "/TSRP/families-roe/" },
-    { title: "LEO", path: "/TSRP/leo/" },
-    { title: "EMS", path: "/TSRP/ems/" }
+    { title: "Home", path: pagePath("/") },
+    { title: "Server Bible", path: pagePath("/server-bible/") },
+    { title: "Faction ROE", path: pagePath("/faction-roe/") },
+    { title: "Families ROE", path: pagePath("/families-roe/") },
+    { title: "LEO", path: pagePath("/leo/") },
+    { title: "EMS", path: pagePath("/ems/") },
+    { title: "Store", path: pagePath("/store/plugs/") }
   ];
+
+  function applyBrandAssets(){
+    document.documentElement.style.setProperty("--site-banner-image", `url("${assetUrl(SITE.bannerAssetPath)}")`);
+  }
 
   const siteCache = new Map();
   let siteLoading = false;
@@ -346,6 +365,7 @@
   // ==============================
   // INIT
   // ==============================
+  applyBrandAssets();
   if(!sessionStorage.getItem("bannerClosed")) injectBanner();
   injectHeader();
   syncBrand();
